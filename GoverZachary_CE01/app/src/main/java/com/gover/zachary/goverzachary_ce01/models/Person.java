@@ -17,8 +17,6 @@ public class Person implements Serializable {
 	private String lname;
 	private int age;
 
-	public Person(){}
-
 	public Person(String fn, String ln, int a) {
 		fname = fn;
 		lname = ln;
@@ -51,24 +49,12 @@ public class Person implements Serializable {
 		return fname;
 	}
 
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
-
 	public String getLname() {
 		return lname;
 	}
 
-	public void setLname(String lname) {
-		this.lname = lname;
-	}
-
 	public int getAge() {
 		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
 	}
 
 }

@@ -15,8 +15,6 @@ import com.gover.zachary.goverzachary_ce01.R;
 
 public class ListViewFragment extends ListFragment {
 
-	private static final String TAG = "ListViewFragment.TAG";
-
 	private ClickListener listener;
 
 	public ListViewFragment(){}

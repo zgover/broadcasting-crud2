@@ -16,8 +16,6 @@ import com.gover.zachary.goverzachary_ce01.models.Person;
 
 public class DetailViewFragment extends Fragment {
 
-	public static final String TAG = "DetailViewFragment.TAG";
-
 	public DetailViewFragment(){}
 
 	public static DetailViewFragment newInstance() {

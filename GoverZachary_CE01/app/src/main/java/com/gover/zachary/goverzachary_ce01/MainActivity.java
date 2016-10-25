@@ -66,6 +66,23 @@ public class MainActivity extends AppCompatActivity implements ListViewFragment.
 		return true;
 	}
 
+	@Override
+	public void listItemClick(int position) {
+		// Open detail activity by triggering an implicit intent
+		Person person = storage.getPeople().get(position);
+
+		if (person != null) {
+			Intent detailActivity = new Intent(DetailActivity.VIEW_DATA);
+
+			// Pass person details
+			detailActivity.putExtra(Person.FNAME_KEY, person.getFname());
+			detailActivity.putExtra(Person.LNAME_KEY, person.getLname());
+			detailActivity.putExtra(Person.AGE_KEY, person.getAge());
+
+			startActivityForResult(detailActivity, DETAIL_RESULT);
+		}
+	}
+
 	private void setupListView() {
 		if (adapter == null) {
 			adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
@@ -97,22 +114,5 @@ public class MainActivity extends AppCompatActivity implements ListViewFragment.
 		adapter.clear();
 		adapter.addAll(storage.getStringResults());
 		adapter.notifyDataSetChanged();
-	}
-
-	@Override
-	public void listItemClick(int position) {
-		// Open detail activity by triggering an implicit intent
-		Person person = storage.getPeople().get(position);
-
-		if (person != null) {
-			Intent detailActivity = new Intent(DetailActivity.VIEW_DATA);
-
-			// Pass person details
-			detailActivity.putExtra(Person.FNAME_KEY, person.getFname());
-			detailActivity.putExtra(Person.LNAME_KEY, person.getLname());
-			detailActivity.putExtra(Person.AGE_KEY, person.getAge());
-
-			startActivityForResult(detailActivity, DETAIL_RESULT);
-		}
 	}
 }
