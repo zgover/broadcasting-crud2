@@ -8,7 +8,6 @@ import android.content.Context;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Storage {
 
@@ -29,12 +28,14 @@ public class Storage {
 	}
 
 	public void addPerson(Person _person) {
+		readPeople();
 		people.add(_person);
 		savePeople();
 	}
 
 	public ArrayList<Person> readPeople() {
-		if (!(new File(FILE_NAME)).exists()) {
+		if (!context.getFileStreamPath(FILE_NAME).exists()) {
+			System.out.println("File Does Not Exist!!!!");
 			return people;
 		}
 
@@ -112,7 +113,9 @@ public class Storage {
 	}
 
 	public void deletePerson(Person person) {
-		people.removeAll(Collections.singleton(person));
+		do {
+			people.remove(person);
+		} while (people.contains(person));
 
 		savePeople();
 	}
